@@ -2,6 +2,12 @@ html {
     /* sets background image to be fixed, centered, full-page, and proportional to original image */
     background: url("https://s3.amazonaws.com/kpomes/media/detroit/detroit6.jpg") no-repeat center center fixed;
     background-size: cover;
+
+    /*This section adds a fading effect when new bg images are introduced.*/
+    transition-property: background;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in;
+    transition-delay: 100ms;
 }
 body {
     padding: 0;

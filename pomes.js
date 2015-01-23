@@ -82,9 +82,74 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var html = document.getElementsByTagName('html')[0];
+var media_path_base = 'https://s3.amazonaws.com/kpomes/'
+
+
+var detroit_bgimgs = ['media/detroit/detroit3.jpg', 
+                        'media/detroit/detroit5.jpg', 
+                        'media/detroit/detroit6.jpg', 
+                        'media/detroit/detroit7.jpg', 
+                        'media/detroit/detroit9.jpg', 
+                        'media/detroit/detroit10.jpg'
+                        ];
+var clifftop_bgimgs = ['media/clifftop/clifftop2.jpg', 
+                        'media/clifftop/clifftop3.jpg', 
+                        'media/clifftop/clifftop4.jpg', 
+                        'media/clifftop/clifftop5.jpg', 
+                        'media/clifftop/clifftop12.jpg'
+                        ];
+var la_bgimgs = ['media/la/la1.jpg', 
+                        'media/la/la4.jpg', 
+                        'media/la/la5.jpg', 
+                        'media/la/la6.jpg', 
+                        'media/la/la7.jpg'
+                        ];
+var orlando_bgimgs = ['media/orlando/orlando1.jpg', 
+                        'media/orlando/orlando2.jpg', 
+                        'media/orlando/orlando4.jpg', 
+                        'media/orlando/orlando6.jpg', 
+                        'media/orlando/orlando7.jpg'    
+                        ];
+
+var bgimgs = {"detroit":detroit_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}), 
+                "clifftop":clifftop_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}), 
+                "la":la_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}), 
+                "orlando":orlando_bgimgs.map(function(currentValue) {return media_path_base+currentValue;})
+            };
+
+var trips = document.getElementsByClassName('trip'); 
+var bgimg_curr;
+var bgimg_new;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 window.onscroll = function(event) {
 
+    change_bgimgs();
     make_navbar_sticky();
+
+    function change_bgimgs() {
+    // changes background image based on which trip's media is on currently the screen
+        for (var i = 0; i < trips.length; i++) {
+            var trip_loc = trips[i].querySelector('h1').id;
+
+            //defines transition point when scrolling up && down, respectively
+            if (screen.height / 4 >= trips[i].getBoundingClientRect().top && screen.height / 4 <= trips[i].getBoundingClientRect().bottom) {
+                if (bgimgs[trip_loc].indexOf(bgimg_curr) >= 0) {
+                    // if current bgimg is in set of pics associated with this trip, don't change bgimg 
+                    bgimg_new = bgimg_curr;
+                } else {
+                    // if current bgimg is not in set of pics associated with this trip, display new pic chosen randomly from this trip's image collection
+                    bgimg_curr = bgimgs[trip_loc][(Math.floor(Math.random() * bgimgs[trip_loc].length))];
+                    bgimg_new = bgimg_curr;
+
+                    html.style.background = 'url(' + bgimg_new + ') no-repeat center center fixed';
+                    html.style.backgroundSize = 'cover';
+                }
+            }
+        }
+    };
 
     function make_navbar_sticky() {
         // creates navbar below splash page map which sticks to top of screen when page is scrolled past map
