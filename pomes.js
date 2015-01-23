@@ -98,3 +98,24 @@ window.onscroll = function(event) {
         }
     };
 }
+
+window.onload = function() {
+
+    // setting individual links to poems
+    function setting_pome_link(pome_block) {
+        pome_block.querySelector('h2 a').href="#"+pome_block.id;
+    }
+
+    var pome_blocks = Array.prototype.slice.call(document.getElementsByClassName('pome-block'));
+    for (i=0; i<pome_blocks.length; i++) {
+        setting_pome_link(pome_blocks[i])
+    }
+
+    // storing poem info in pome-block data-attributes
+    var attributes = ['year', 'month', 'day', 'time', 'trip', 'author'];
+    pome_blocks.forEach(function(pome_block, index) {
+        attributes.forEach(function(attribute, index) {
+            pome_block.setAttribute('data' + '-' + attributes[index], pome_block.id.split('-')[index]);
+        });
+    });
+}
