@@ -118,4 +118,30 @@ window.onload = function() {
             pome_block.setAttribute('data' + '-' + attributes[index], pome_block.id.split('-')[index]);
         });
     });
+
+    function generate_byline(pome_block) {
+    // creates a byline for each poem based on info encoded in pome-block id
+        var newdiv = document.createElement('div');
+
+        // styles time to look like digital clock time with ":"
+        var time_tmp = pome_block.getAttribute('data-time');
+        var time = time_tmp.match(/.{1,2}/g)[0] + ":" + time_tmp.match(/.{1,2}/g)[1];
+
+        // constructs byline from id contents
+        newdiv.setAttribute('class', 'byline')
+        newdiv.innerHTML = "written by " + pome_block.getAttribute('data-author') + " on " + pome_block.getAttribute('data-month') + "." + pome_block.getAttribute('data-day') + "." + pome_block.getAttribute('data-year') + " at " + time + " EST";
+
+        return newdiv;
+    };
+
+    function place_bylines() {
+        for (i=0; i<pome_blocks.length; i++) {
+            // inserts byline after h2 elements (e.g. poem titles) 
+            parentdiv = pome_blocks[i].querySelectorAll('h2')[0];
+            parentdiv.appendChild(generate_byline(pome_blocks[i]));
+        }
+    };
+
+    place_bylines();
+
 }
