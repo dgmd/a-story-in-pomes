@@ -10,9 +10,45 @@
 
 	<link rel='stylesheet' type="text/css" href="./pomes.css">
 
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO3fg2p5XKQxFip1i8bsxv-cO4UcDwFUM"></script>
+
+	<script>
+		function initialize() {
+
+		    var mapOptions = {
+		        center: {
+		            lat: 39,
+		            lng: -99
+		        },
+		        zoom: 5,
+
+		        // disables scroll-initiated zooming
+		        scrollwheel: false,
+
+		        // hides other scaling, zooming, and display options
+		        panControl: false,
+		        zoomControl: false,
+		        scaleControl: false,
+		        streetViewControl: false,
+		        overviewMapControl: false,
+
+		        //display satellite map w high level labels as default
+		        mapTypeId: google.maps.MapTypeId.HYBRID,
+		    };
+
+		    // defines map object and applies styling to that object
+		    var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+
 </head>
 
 <body>
+
+<div id="map-canvas"></div> <!--google maps object -->
 
 <ul id="nav">
 <li class="nav_button"><a href="#detroit">Detroit</a></li>
