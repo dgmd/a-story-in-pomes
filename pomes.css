@@ -43,3 +43,35 @@ a {
 audio, img {
     width: 100%;
 }
+
+/**************************************Pertaining to the navbar*/
+ul#nav {
+    /*For horizontal nav*/
+    list-style-type: none;
+    
+    width: 100%;
+    padding: 0;
+    margin: auto;
+    font-size: 18px;
+    font-family: helvetica, sans-serif;
+    text-decoration: none;
+    box-shadow: 0 2px 2px #606060;
+}
+#nav li {
+    /*For horizontal nav*/
+    float: left;
+    
+    /*Set width of navbar items to be 100% width/# of li's - left-right padding btw li's*/
+    width: calc(100%/5 - 10px);
+    padding: 5px;
+    text-align: center;
+    background-color: #FFFFFF;
+
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+}
+#nav a {
+    padding: 0;
+    text-decoration: none;
+    color: black;
+}
