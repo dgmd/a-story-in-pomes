@@ -43,12 +43,44 @@ a {
 audio, img {
     width: 100%;
 }
+
+/**************************************Pertaining to the map and splash page*/
 #map-canvas {
     height: 700px;
     width: 100%;
     margin: 0;
     padding: 0;
+
+    /*places title over map canvas*/
+    position: relative;
 }
+.site-title {
+    font-family: 'Arvo', Georgia, serif;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+    color: #003F87;
+}
+#site-title-bg {
+    /*places title over map canvas*/
+    position: absolute;
+    z-index: 100;
+    height: 210px;
+    width: 800px;
+    background-color: rgba(255, 255, 255, .7);
+    left: 0px;
+    top: 100px;
+    border-radius: 0 50px 50px 0;
+}
+#site-title-pt1 {
+    font-size: 80px;
+    text-indent: 180px;
+}
+#site-title-pt2 {
+    font-size: 80px;
+    text-indent: 290px;
+}
+
 /**************************************Pertaining to the navbar*/
 ul#nav {
     /*For horizontal nav*/
