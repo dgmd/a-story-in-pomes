@@ -164,7 +164,25 @@ window.onscroll = function(event) {
     };
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 window.onload = function() {
+
+	function nav_onclick(e) {
+        // rotates through trip-specific bgimgs if same nav link clicked multiple times
+        if (document.URL == e.target.href) {
+            var loc = document.URL.split('#')[1]; // parse trip name from current url
+            var trip_pics = bgimgs[loc]; // grabs list of trip related bgimgs
+            var random_trip_pic = trip_pics[(Math.floor(Math.random() * trip_pics.length))];
+
+            html.style.background = 'url(' + random_trip_pic + ') no-repeat center center fixed';
+            html.style.backgroundSize = 'cover';
+        }
+    }
+
+    for (var i=0; i<document.getElementsByClassName("nav_button").length; i++) {
+        document.getElementsByClassName("nav_button")[i].addEventListener("click", nav_onclick)
+    }
 
     // setting individual links to poems
     function setting_pome_link(pome_block) {
