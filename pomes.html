@@ -2,6 +2,54 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 
 <head>
+	<!--fixes the character encoding issue causing hypens, etc. to appear as special characters-->
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+	<!-- imports Arvo font from Google Fonts, so it can be assigned through CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+
+	<style>
+		body {
+		    padding: 0;
+		    margin: 0;
+		    font-family: helvetica, sans-serif;
+		    font-size: 18px;
+		}
+		#content {
+		    /*Sets and centers backdrop of central pome listing*/
+		    width: 45%;
+		    margin: auto;
+		    padding: 0 40px 60px 40px;
+		}
+		.pome {
+		    /* maintains line breaks & white-space */   
+		    white-space: pre-wrap;
+		}
+		h1 {
+		    /*Trip titles*/
+		    font-family: 'Arvo';
+		    font-size: 44px;
+		    font-weight: normal;
+		    padding: 80px 0 0 0;
+		}
+		h2 {
+		    /*Poem titles*/  
+		    font-family: 'Arvo';
+		    font-size: 28px;
+		    margin: 0;
+		    padding: 45px 0 0 0;
+		}
+		a {
+		    font-family: 'Arvo';
+		    text-decoration: none;
+		    color: black;
+		    font-weight: normal;
+		}
+		audio, img {
+		    width: 100%;
+		}
+	</style>
+
 </head>
 
 <body>
