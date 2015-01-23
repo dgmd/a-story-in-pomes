@@ -79,3 +79,22 @@ function initialize() {
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+window.onscroll = function(event) {
+
+    make_navbar_sticky();
+
+    function make_navbar_sticky() {
+        // creates navbar below splash page map which sticks to top of screen when page is scrolled past map
+        var map = document.getElementById('map-canvas');
+        var nav = document.getElementById('nav');
+        if (map.getBoundingClientRect().bottom <= 0) {
+            nav.style.position = 'fixed';
+            nav.style.top = '0';
+        } else {
+            nav.style.position = 'relative';
+        }
+    };
+}
