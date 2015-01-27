@@ -58,6 +58,9 @@ audio, img {
 }
 
 /**************************************Pertaining to the map and splash page*/
+#splash {
+    display:none;
+}
 #map-canvas {
     height: 700px;
     width: 100%;
@@ -92,6 +95,10 @@ audio, img {
 #site-title-pt2 {
     font-size: 80px;
     text-indent: 290px;
+}
+/**************************************Pertaining to the alt, camera-based splash page*/
+#alt-splash {
+    height:700px; /*same as #splash, so they can be swapped back and forth*/
 }
 
 /**************************************Pertaining to the navbar*/
