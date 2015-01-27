@@ -174,12 +174,15 @@ var splash_toggle = document.getElementById('splash-toggle');
 splash_toggle.addEventListener('click', toggleSplash)
 
 function toggleSplash() {
+    var navToTop = document.getElementById('top');
     if (getComputedStyle(alt_splash).getPropertyValue('display') == 'none') {
         alt_splash.style.display = 'block';
         splash.style.display = 'none';
+        navToTop.href = '#alt-splash';
     } else if (getComputedStyle(splash).getPropertyValue('display') == 'none') {
         splash.style.display = 'block';
-        alt_splash.style.display = 'none';
+        alt_splash.style.display = 'none';        
+        navToTop.href = '#splash';
     }
 }
 
