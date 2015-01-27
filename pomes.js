@@ -283,6 +283,51 @@ place_bylines();
   startbutton.addEventListener('click', function(ev){
       takepicture();
     ev.preventDefault();
+    avgColor(canvasObj) /*just a test line*/
   }, false);
 
 })();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// logic for identifying the color of images taken with the camera
+
+var canvasObj = document.getElementById('canvas');
+
+function avgColor(canvasObj) {
+    var context = canvasObj.getContext('2d');
+    var rgb = {
+        r: 102,
+        g: 102,
+        b: 102
+    }; // Set a base colour as a fallback for non-compliant browsers
+    var pixelInterval = 5; // Rather than inspect every single pixel in the image inspect every 5th pixel
+    var count = 0;
+    var i = -4;
+    var data;
+    var length;
+
+    try {
+        data = context.getImageData(0, 0, canvasObj.width, canvasObj.height);
+    } catch (e) {
+        // catch errors - usually due to cross domain security issues
+        alert(e);
+    }
+
+    data = data.data;
+    length = data.length;
+    while ((i += pixelInterval * 4) < length) {
+        count++;
+        rgb.r += data[i];
+        rgb.g += data[i + 1];
+        rgb.b += data[i + 2];
+    }
+
+    // floor the average values to give correct rgb values (ie: round number values)
+    rgb.r = Math.floor(rgb.r / count);
+    rgb.g = Math.floor(rgb.g / count);
+    rgb.b = Math.floor(rgb.b / count);
+
+    console.log(rgb);
+    return rgb;
+}
