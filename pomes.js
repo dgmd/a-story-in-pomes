@@ -283,7 +283,7 @@ place_bylines();
   startbutton.addEventListener('click', function(ev){
       takepicture();
     ev.preventDefault();
-    avgColor(canvasObj) /*just a test line*/
+    identifyColor(avgColor(canvasObj)); /*just a test line*/
   }, false);
 
 })();
@@ -328,7 +328,6 @@ function avgColor(canvasObj) {
     rgb.g = Math.floor(rgb.g / count);
     rgb.b = Math.floor(rgb.b / count);
 
-    console.log(rgb);
     return rgb;
 }
 
@@ -337,3 +336,27 @@ function distanceBetween(p1, p2) {
     var dist = Math.sqrt(Math.pow((p2.r - p1.r), 2) + Math.pow((p2.g - p1.g), 2) + Math.pow((p2.b - p1.b), 2));
     return dist;
 }
+
+function identifyColor(avgImgColor) {
+    var colorTests = {};
+    colorTests['red'] = {r:255,g:0,b:0};
+    colorTests['green'] = {r:0,g:255,b:0};
+    colorTests['blue'] = {r:0,g:0,b:255};
+    colorTests['white'] = {r:255,g:255,b:255};
+    colorTests['black'] = {r:0,g:0,b:0};  
+    colorTests['yellow'] = {r:255,g:255,b:0};
+    colorTests['magenta'] = {r:255,g:0,b:255};
+    colorTests['cyan'] = {r:0,g:255,b:255}
+
+    distDict = {};        
+    for (color in colorTests) {
+      distDict[distanceBetween(avgImgColor, colorTests[color])] = color;
+    }
+    
+    var minDist = Math.min.apply(Math, Object.keys(distDict));
+    
+    var imgColor = distDict[minDist]
+
+    console.log(imgColor);
+    return imgColor;
+};
