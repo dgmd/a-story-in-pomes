@@ -166,6 +166,22 @@ window.onscroll = function(event) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var alt_splash = document.getElementById('alt-splash');
+var splash = document.getElementById('splash')
+
+var splash_toggle = document.getElementById('splash-toggle');
+splash_toggle.addEventListener('click', toggleSplash)
+
+function toggleSplash() {
+    if (getComputedStyle(alt_splash).getPropertyValue('display') == 'none') {
+        alt_splash.style.display = 'block';
+        splash.style.display = 'none';
+    } else if (getComputedStyle(splash).getPropertyValue('display') == 'none') {
+        splash.style.display = 'block';
+        alt_splash.style.display = 'none';
+    }
+}
+
 function nav_onclick(e) {
     // rotates through trip-specific bgimgs if same nav link clicked multiple times
     if (document.URL == e.target.href) {

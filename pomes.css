@@ -58,8 +58,17 @@ audio, img {
 }
 
 /**************************************Pertaining to the map and splash page*/
-#splash {
-    display:none;
+#splash-toggle {
+    position:absolute;
+    top:4px;
+    right:4px;
+    padding:5px;
+    border:solid;
+    border-radius:10px;
+    background-color:white;
+    cursor:pointer;
+    font-family: 'Arvo', Georgia, serif;
+    z-index:100;
 }
 #map-canvas {
     height: 700px;
@@ -100,6 +109,7 @@ audio, img {
 #alt-splash {
     height:700px; /*same as #splash, so they can be swapped back and forth*/
     background-color:rgba(0,0,0,.8);
+    display:none;
 }
 #alt-wrapper {
     margin:auto;
