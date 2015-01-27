@@ -99,6 +99,59 @@ audio, img {
 /**************************************Pertaining to the alt, camera-based splash page*/
 #alt-splash {
     height:700px; /*same as #splash, so they can be swapped back and forth*/
+    background-color:rgba(0,0,0,.8);
+}
+#alt-wrapper {
+    margin:auto;
+    padding:25px 5% 0 5%;
+}
+#alt-site-title {
+    padding:0;
+    margin:0;
+    text-align: center;
+    color:white;
+}
+p {
+    padding:0;
+    margin:10px 0 20px 0;
+    color:#ccc;
+    text-align:center;
+}
+.media-wrapper { 
+  /* needed for overlay */ 
+  position:relative;
+  padding:0;
+  margin:0 20px 0 20px;
+}
+#video, #canvas {
+    border-radius:40px 40px 0 0;
+    background-color:#ccc;
+}
+.overlay {
+    /* needed for overlay */
+    position:absolute;
+    bottom:0;
+    left:0;
+
+    /* just for looks */
+    font-size:18px;
+    font-family:Helvetica,sans-serif;
+    text-align: center;
+    padding:5px 0 0 0;
+    height:30px;
+    width:600px;
+    background-color:rgba(255,255,255,.8);
+}
+button {
+    height:40px;
+    width:140px;
+    background-color:#ccc;
+    border:solid 1px;
+    border-radius:10px;
+    font-size:18px;
+    font-family:'Arvo',Helvetica,sans-serif;
+    margin:15px 0 0 570px;
+    cursor:pointer;
 }
 
 /**************************************Pertaining to the navbar*/

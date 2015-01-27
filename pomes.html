@@ -18,9 +18,20 @@
 <body>
 
 <div id="alt-splash">
-    <video id="video"></video>
+  <div id="alt-wrapper">
+    <h1 id="alt-site-title">while i was away pomes</h1> 
+    <p>Place a card in the view of your computer's built-in camera. <br> Center it as best you can, and make sure the frame is as well-lit as possible. <br> Click "Identify Card" to see where the card will send you in the collection of poems and trips below.</p>
+    <span class="media-wrapper">
+      <video id="video"></video>
+      <span class="overlay">Center your card here so it fills the screen.</span>
+    </span>
+    <span class="media-wrapper">
+      <canvas id="canvas"></canvas>
+      <span class="overlay">The picture captured from your card will appear here.</span>
+    </span>
+    <br>
     <button id="startbutton">Take Photo</button>
-    <canvas id="canvas"></canvas>
+  </div>
 </div>
 
 <div id="splash">

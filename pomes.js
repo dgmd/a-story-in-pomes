@@ -153,7 +153,7 @@ window.onscroll = function(event) {
 
     function make_navbar_sticky() {
         // creates navbar below splash page map which sticks to top of screen when page is scrolled past map
-        var map = document.getElementById('map-canvas');
+        var map = document.getElementById('alt-splash');
         var nav = document.getElementById('nav');
         if (map.getBoundingClientRect().bottom <= 0) {
             nav.style.position = 'fixed';
