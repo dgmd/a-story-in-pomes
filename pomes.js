@@ -331,3 +331,9 @@ function avgColor(canvasObj) {
     console.log(rgb);
     return rgb;
 }
+
+function distanceBetween(p1, p2) { 
+    // p1,p2 should both in the form of {r:#,b:#,g:#}
+    var dist = Math.sqrt(Math.pow((p2.r - p1.r), 2) + Math.pow((p2.g - p1.g), 2) + Math.pow((p2.b - p1.b), 2));
+    return dist;
+}
