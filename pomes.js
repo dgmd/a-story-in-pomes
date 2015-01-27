@@ -166,65 +166,123 @@ window.onscroll = function(event) {
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-window.onload = function() {
+function nav_onclick(e) {
+    // rotates through trip-specific bgimgs if same nav link clicked multiple times
+    if (document.URL == e.target.href) {
+        var loc = document.URL.split('#')[1]; // parse trip name from current url
+        var trip_pics = bgimgs[loc]; // grabs list of trip related bgimgs
+        var random_trip_pic = trip_pics[(Math.floor(Math.random() * trip_pics.length))];
 
-	function nav_onclick(e) {
-        // rotates through trip-specific bgimgs if same nav link clicked multiple times
-        if (document.URL == e.target.href) {
-            var loc = document.URL.split('#')[1]; // parse trip name from current url
-            var trip_pics = bgimgs[loc]; // grabs list of trip related bgimgs
-            var random_trip_pic = trip_pics[(Math.floor(Math.random() * trip_pics.length))];
-
-            html.style.background = 'url(' + random_trip_pic + ') no-repeat center center fixed';
-            html.style.backgroundSize = 'cover';
-        }
+        html.style.background = 'url(' + random_trip_pic + ') no-repeat center center fixed';
+        html.style.backgroundSize = 'cover';
     }
-
-    for (var i=0; i<document.getElementsByClassName("nav_button").length; i++) {
-        document.getElementsByClassName("nav_button")[i].addEventListener("click", nav_onclick)
-    }
-
-    // setting individual links to poems
-    function setting_pome_link(pome_block) {
-        pome_block.querySelector('h2 a').href="#"+pome_block.id;
-    }
-
-    var pome_blocks = Array.prototype.slice.call(document.getElementsByClassName('pome-block'));
-    for (i=0; i<pome_blocks.length; i++) {
-        setting_pome_link(pome_blocks[i])
-    }
-
-    // storing poem info in pome-block data-attributes
-    var attributes = ['year', 'month', 'day', 'time', 'trip', 'author'];
-    pome_blocks.forEach(function(pome_block, index) {
-        attributes.forEach(function(attribute, index) {
-            pome_block.setAttribute('data' + '-' + attributes[index], pome_block.id.split('-')[index]);
-        });
-    });
-
-    function generate_byline(pome_block) {
-    // creates a byline for each poem based on info encoded in pome-block id
-        var newdiv = document.createElement('div');
-
-        // styles time to look like digital clock time with ":"
-        var time_tmp = pome_block.getAttribute('data-time');
-        var time = time_tmp.match(/.{1,2}/g)[0] + ":" + time_tmp.match(/.{1,2}/g)[1];
-
-        // constructs byline from id contents
-        newdiv.setAttribute('class', 'byline')
-        newdiv.innerHTML = "written by " + pome_block.getAttribute('data-author') + " on " + pome_block.getAttribute('data-month') + "." + pome_block.getAttribute('data-day') + "." + pome_block.getAttribute('data-year') + " at " + time + " EST";
-
-        return newdiv;
-    };
-
-    function place_bylines() {
-        for (i=0; i<pome_blocks.length; i++) {
-            // inserts byline after h2 elements (e.g. poem titles) 
-            parentdiv = pome_blocks[i].querySelectorAll('h2')[0];
-            parentdiv.appendChild(generate_byline(pome_blocks[i]));
-        }
-    };
-
-    place_bylines();
-
 }
+
+for (var i=0; i<document.getElementsByClassName("nav_button").length; i++) {
+    document.getElementsByClassName("nav_button")[i].addEventListener("click", nav_onclick)
+}
+
+// setting individual links to poems
+function setting_pome_link(pome_block) {
+    pome_block.querySelector('h2 a').href="#"+pome_block.id;
+}
+
+var pome_blocks = Array.prototype.slice.call(document.getElementsByClassName('pome-block'));
+for (i=0; i<pome_blocks.length; i++) {
+    setting_pome_link(pome_blocks[i])
+}
+
+// storing poem info in pome-block data-attributes
+var attributes = ['year', 'month', 'day', 'time', 'trip', 'author'];
+pome_blocks.forEach(function(pome_block, index) {
+    attributes.forEach(function(attribute, index) {
+        pome_block.setAttribute('data' + '-' + attributes[index], pome_block.id.split('-')[index]);
+    });
+});
+
+function generate_byline(pome_block) {
+// creates a byline for each poem based on info encoded in pome-block id
+    var newdiv = document.createElement('div');
+
+    // styles time to look like digital clock time with ":"
+    var time_tmp = pome_block.getAttribute('data-time');
+    var time = time_tmp.match(/.{1,2}/g)[0] + ":" + time_tmp.match(/.{1,2}/g)[1];
+
+    // constructs byline from id contents
+    newdiv.setAttribute('class', 'byline')
+    newdiv.innerHTML = "written by " + pome_block.getAttribute('data-author') + " on " + pome_block.getAttribute('data-month') + "." + pome_block.getAttribute('data-day') + "." + pome_block.getAttribute('data-year') + " at " + time + " EST";
+
+    return newdiv;
+};
+
+function place_bylines() {
+    for (i=0; i<pome_blocks.length; i++) {
+        // inserts byline after h2 elements (e.g. poem titles) 
+        parentdiv = pome_blocks[i].querySelectorAll('h2')[0];
+        parentdiv.appendChild(generate_byline(pome_blocks[i]));
+    }
+};
+
+place_bylines();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// connects built-in camera and reads output to take still picture
+
+(function() {
+
+  var streaming = false,
+      video        = document.querySelector('#video'),
+      canvas       = document.querySelector('#canvas'),
+      startbutton  = document.querySelector('#startbutton'),
+      width = 600,
+      height = 0;
+
+  navigator.getMedia = ( navigator.getUserMedia ||
+                         navigator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia);
+
+  navigator.getMedia(
+    {
+      video: true,
+      audio: false
+    },
+    function(stream) {
+      if (navigator.mozGetUserMedia) {
+        video.mozSrcObject = stream;
+      } else {
+        var vendorURL = window.URL || window.webkitURL;
+        video.src = vendorURL.createObjectURL(stream);
+      }
+      video.play();
+    },
+    function(err) {
+      console.log("An error occured! " + err);
+    }
+  );
+
+  video.addEventListener('canplay', function(ev){
+    if (!streaming) {
+      height = video.videoHeight / (video.videoWidth/width);
+      video.setAttribute('width', width);
+      video.setAttribute('height', height);
+      canvas.setAttribute('width', width);
+      canvas.setAttribute('height', height);
+      streaming = true;
+    }
+  }, false);
+
+  function takepicture() {
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+    var data = canvas.toDataURL('image/png');
+  }
+
+  startbutton.addEventListener('click', function(ev){
+      takepicture();
+    ev.preventDefault();
+  }, false);
+
+})();
