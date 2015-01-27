@@ -124,6 +124,9 @@ var bgimg_new;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var alt_splash = document.getElementById('alt-splash');
+var splash = document.getElementById('splash')
+
 window.onscroll = function(event) {
 
     change_bgimgs();
@@ -153,21 +156,19 @@ window.onscroll = function(event) {
 
     function make_navbar_sticky() {
         // creates navbar below splash page map which sticks to top of screen when page is scrolled past map
-        var map = document.getElementById('alt-splash');
         var nav = document.getElementById('nav');
-        if (map.getBoundingClientRect().bottom <= 0) {
+        if ((getComputedStyle(alt_splash).getPropertyValue('display') !== 'none' && alt_splash.getBoundingClientRect().bottom <= 0) || 
+            (getComputedStyle(splash).getPropertyValue('display') !== 'none' && splash.getBoundingClientRect().bottom <= 0)) {
             nav.style.position = 'fixed';
             nav.style.top = '0';
         } else {
+            console.log(!splash.style.display + "    " + splash.getBoundingClientRect().bottom);
             nav.style.position = 'relative';
         }
     };
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-var alt_splash = document.getElementById('alt-splash');
-var splash = document.getElementById('splash')
 
 var splash_toggle = document.getElementById('splash-toggle');
 splash_toggle.addEventListener('click', toggleSplash)
