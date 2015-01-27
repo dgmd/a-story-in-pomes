@@ -283,7 +283,6 @@ place_bylines();
   startbutton.addEventListener('click', function(ev){
       takepicture();
     ev.preventDefault();
-    identifyColor(avgColor(canvasObj)); /*just a test line*/
   }, false);
 
 })();
@@ -360,3 +359,9 @@ function identifyColor(avgImgColor) {
     console.log(imgColor);
     return imgColor;
 };
+
+//activates the camera-based splash picture taking ability
+startbutton = document.querySelector('#startbutton');
+startbutton.addEventListener('click', function() {
+    window.location.href = '#' + identifyColor(avgColor(canvasObj));
+});
