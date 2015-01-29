@@ -1,4 +1,5 @@
-Gift One: Interactive Story
+# Gift One: Interactive Story
+
 The first gift we design and develop together will be one that tells a story. At first blush, the word story might pigeonhole itself as fiction or folklore, but the power of narrative to inspire and entertain has as many ancient forms as it does modern. Services like Twitter, Facebook, and Snapchat collect our words, images, videos, and other artifacts of our digital interactions to construct “stories” aiming to tell the narratives of our lives and relationships. In the world of journalism and civic media, amplifying the “stories” of individuals and communities over those of money and politics is the basis of much talk and dreaming. Big data and data visualization even promise to tell system-level narratives, helping us to tell the “stories” we can only see by zooming out and observing large-scale trends and patterns.
 
 Whether you receive these new forms of story-telling with skepticism, excitement, or something in between, we want to use this first project as an opportunity to explore the many different forms a story can take and the new storytelling experiences now possible natively within the browser and with physical extensions supported by modern browsers. We hope you will follow your own interests and aesthetic sensibilities as you develop a story-based project of your own design.
