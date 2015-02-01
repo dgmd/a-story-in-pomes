@@ -21,6 +21,10 @@ body {
     margin: auto;
     padding: 0 40px 60px 40px;
     background-color: rgba(255, 255, 255, .7);
+
+    /*places audio elements behind navbar */
+    position:relative;
+    z-index:-2;
 }
 .pome {
     /* maintains line breaks & white-space */   
@@ -55,6 +59,10 @@ a {
 }
 audio, img {
     width: 100%;
+
+    /*places audio elements behind navbar*/
+    position:relative;
+    z-index:-1;
 }
 
 /**************************************Pertaining to the map and splash page*/
