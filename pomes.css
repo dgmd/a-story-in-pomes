@@ -24,7 +24,7 @@ body {
 
     /*places audio elements behind navbar */
     position:relative;
-    z-index:-2;
+    z-index:-3;
 }
 .pome {
     /* maintains line breaks & white-space */   
