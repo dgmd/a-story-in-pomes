@@ -139,7 +139,7 @@ p {
   /* needed for overlay */ 
   position:relative;
   padding:0;
-  margin:0 20px 0 20px;
+  /*margin:0 20px 0 20px;*/
 }
 #video, #canvas {
     border-radius:40px 40px 0 0;
