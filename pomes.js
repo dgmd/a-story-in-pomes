@@ -112,10 +112,21 @@ var orlando_bgimgs = ['media/orlando/orlando1.jpg',
                         'media/orlando/orlando7.jpg'    
                         ];
 
+var sng_bgimgs = ['media/sng/sng1.JPG', 
+                        'media/sng/sng2.JPG',
+                        'media/sng/sng3.JPG',  
+                        'media/sng/sng4.JPG', 
+                        'media/sng/sng5.JPG', 
+                        'media/sng/sng6.JPG', 
+                        'media/sng/sng7.JPG'    
+                        ];
+
 var bgimgs = {"detroit":detroit_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}), 
                 "clifftop":clifftop_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}), 
                 "la":la_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}), 
-                "orlando":orlando_bgimgs.map(function(currentValue) {return media_path_base+currentValue;})
+                "orlando":orlando_bgimgs.map(function(currentValue) {return media_path_base+currentValue;}),
+                "sng":sng_bgimgs.map(function(currentValue) {return media_path_base+currentValue;})
+
             };
 
 var trips = document.getElementsByClassName('trip'); 
