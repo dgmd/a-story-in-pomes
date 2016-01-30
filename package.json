@@ -1,0 +1,24 @@
+{
+  "name": "a-story-in-pomes",
+  "version": "0.0.1",
+  "description": "Shaunalynn Duffy's `a-story-in-pomes` project for DGMD E-15",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgmd/a-story-in-pomes.git"
+  },
+  "author": "Shaunalynn Duffy (shaunalynn@thesprouts.org, duffles on GitHub)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dgmd/a-story-in-pomes/issues"
+  },
+  "homepage": "https://github.com/dgmd/a-story-in-pomes#readme"
+}
